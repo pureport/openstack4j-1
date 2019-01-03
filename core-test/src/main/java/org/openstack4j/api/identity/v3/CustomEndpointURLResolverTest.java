@@ -8,11 +8,13 @@ import static org.testng.Assert.assertEquals;
 import java.io.IOException;
 
 import org.openstack4j.api.AbstractTest;
+import org.openstack4j.api.SkipTest;
 import org.openstack4j.api.identity.EndpointURLResolver;
 import org.openstack4j.api.types.ServiceType;
 import org.openstack4j.core.transport.Config;
 import org.openstack4j.model.identity.URLResolverParams;
 import org.openstack4j.openstack.internal.OSClientSession.OSClientSessionV3;
+import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -56,9 +58,10 @@ public class CustomEndpointURLResolverTest extends AbstractTest {
 	/**
 	 * This test validates the custom url endpoint resolver is used when it has
 	 * been configured in the Config class.
-	 * 
+	 *
 	 * @throws IOException
 	 */
+	@SkipTest(connector = ".*") // getCustomConfigSession() breaks the endpoint URL resolver for other tests
 	public void customImplementation_Test() throws IOException {
 		// create the default session
 		final OSClientSessionV3 customConfigSession = getCustomConfigSession();
