@@ -8,6 +8,7 @@ import static org.testng.Assert.assertEquals;
 import java.io.IOException;
 
 import org.openstack4j.api.AbstractTest;
+import org.openstack4j.api.SkipTest;
 import org.openstack4j.api.identity.EndpointURLResolver;
 import org.openstack4j.api.types.ServiceType;
 import org.openstack4j.core.transport.Config;
@@ -57,6 +58,7 @@ public class CustomEndpointURLResolverTest extends AbstractTest {
 	 * 
 	 * @throws IOException
 	 */
+	@SkipTest(connector = ".*") // getCustomConfigSession() breaks the endpoint URL resolver for other tests
 	public void customImplementation_Test() throws IOException {
 		// create the default session
 		final OSClientSessionV2 customConfigSession = getCustomConfigSession();
