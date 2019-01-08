@@ -87,6 +87,7 @@ import org.openstack4j.api.networking.NetFloatingIPService;
 import org.openstack4j.api.networking.NetworkService;
 import org.openstack4j.api.networking.NetworkingService;
 import org.openstack4j.api.networking.PortService;
+import org.openstack4j.api.networking.QoSPolicyService;
 import org.openstack4j.api.networking.RouterService;
 import org.openstack4j.api.networking.SecurityGroupRuleService;
 import org.openstack4j.api.networking.SecurityGroupService;
@@ -254,6 +255,7 @@ import org.openstack4j.openstack.networking.internal.FloatingIPServiceImpl;
 import org.openstack4j.openstack.networking.internal.NetworkServiceImpl;
 import org.openstack4j.openstack.networking.internal.NetworkingServiceImpl;
 import org.openstack4j.openstack.networking.internal.PortServiceImpl;
+import org.openstack4j.openstack.networking.internal.QoSPolicyServiceImpl;
 import org.openstack4j.openstack.networking.internal.RouterServiceImpl;
 import org.openstack4j.openstack.networking.internal.SecurityGroupRuleServiceImpl;
 import org.openstack4j.openstack.networking.internal.SecurityGroupServiceImpl;
@@ -546,6 +548,9 @@ public class DefaultAPIProvider implements APIProvider {
         bind(ActionExecutionService.class, ActionExecutionServiceImpl.class);
         bind(WorkflowEnvironmentService.class, WorkflowEnvironmentServiceImpl.class);
         bind(CronTriggerService.class, CronTriggerServiceImpl.class);
+
+        // Pureport - OpenStack Networking V2 services
+        bind(QoSPolicyService.class, QoSPolicyServiceImpl.class);
     }
 
     /**
