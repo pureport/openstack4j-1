@@ -1,6 +1,8 @@
 package org.openstack4j.openstack.networking.domain;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import org.openstack4j.model.common.builder.ResourceBuilder;
 import org.openstack4j.model.network.QoSPolicy;
 import org.openstack4j.model.network.builder.QoSPolicyBuilder;
@@ -30,6 +32,17 @@ public class NeutronQoSPolicy implements QoSPolicy {
     @JsonProperty("is_default")
     private boolean isDefault;
 
+    @JsonTypeInfo(
+            use = JsonTypeInfo.Id.NAME,
+            include = JsonTypeInfo.As.PROPERTY,
+            property = "type"
+    )
+    @JsonSubTypes({
+            @JsonSubTypes.Type(value = NeutronBandwidthLimitRule.class, name = "bandwidth_limit"),
+            @JsonSubTypes.Type(value = NeutronDscpMarkingRule.class, name = "dscp_marking"),
+            @JsonSubTypes.Type(value = NeutronMinimumBandwidthRule.class, name = "minimum_bandwidth"),
+    })
+    @JsonProperty("rules")
     private List<? extends Rule> rules;
 
     @JsonProperty("created_at")
