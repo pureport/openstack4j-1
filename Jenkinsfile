@@ -37,7 +37,7 @@ pipeline {
             }
             steps {
                 script {
-                    sh "mvn -B jgitflow:release-start jgitflow:release-finish"
+                    sh "mvn -B gitflow:release-start gitflow:release-finish"
                 }
             }
         }
