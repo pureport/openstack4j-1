@@ -29,6 +29,10 @@ pipeline {
             }
         }
         stage('Publish release') {
+            environment {
+                GIT_COMMITTER_NAME = "Pureport Releases"
+                GIT_COMMITTER_EMAIL = "releases@pureport.com"
+            }
             when {
                 allOf {
                     branch 'develop'
