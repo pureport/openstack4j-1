@@ -37,7 +37,7 @@ pipeline {
             }
             steps {
                 withCredentials([sshUserPrivateKey(credentialsId: 'afd41fdf-71c7-4174-8d63-c4ae8d163367', keyFileVariable: 'SSH_KEY')]){
-                    sh "ssh-agent bash -c 'ssh-add ${SSH_KEY}; mvn -B gitflow:release-start gitflow:release-finish'"
+                    sh "ssh-agent bash -c 'ssh-add ${SSH_KEY}; mvn -B gitflow:release-start gitflow:release-finish -DpostReleaseGoals=deploy'"
                 }
             }
         }
