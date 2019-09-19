@@ -20,7 +20,7 @@ pipeline {
         }
         stage('Publish snapshot') {
             when {
-                branch 'develop'
+                branch 'pureport/develop'
             }
             steps {
                 script {
@@ -31,7 +31,7 @@ pipeline {
         stage('Publish release') {
             when {
                 allOf {
-                    branch 'develop'
+                    branch 'pureport/develop'
                     expression { params.RELEASE }
                 }
             }
