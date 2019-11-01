@@ -1250,4 +1250,10 @@ public class Builders {
     public static WorkflowBuilders workflow() {
         return new MistralBuilders();
     }
+
+    public static Layer2GatewayBuilder l2Gateway(){ return new NeutronLayer2Gateway.Layer2GatewayConcreteBuilder(); }
+
+    public static Layer2GatewayConnectionBuilder l2GatewayConnection() {
+        return new NeutronLayer2GatewayConnection.Layer2GatewayConnectionConcreteBuilder();
+    }
 }
