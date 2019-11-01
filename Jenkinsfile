@@ -23,8 +23,10 @@ pipeline {
                 branch 'pureport/develop'
             }
             steps {
-                script {
-                    sh "mvn deploy"
+                withCredentials([usernamePassword(credentialsId: 'nexus_credentials', usernameVariable: 'SONATYPE_USERNAME', passwordVariable: 'SONATYPE_PASSWORD')]) {
+                    script {
+                        sh "mvn --settings $WORKSPACE/distribution/settings.xml deploy"
+                    }
                 }
             }
         }
