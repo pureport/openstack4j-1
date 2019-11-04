@@ -202,8 +202,8 @@
                 <version>1.11.0</version>
                 <configuration>
                     <gitFlowConfig>
-                        <masterBranchName>pureport/master</masterBranchName>
-                        <developBranchName>pureport/develop</developBranchName>
+                        <productionBranch>pureport/master</productionBranch>
+                        <developmentBranch>pureport/develop</developmentBranch>
                         <featureBranchPrefix>feature/</featureBranchPrefix>
                         <releaseBranchPrefix>release/</releaseBranchPrefix>
                         <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
