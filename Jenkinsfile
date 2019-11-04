@@ -38,8 +38,11 @@ pipeline {
                 }
             }
             steps {
-                withCredentials([sshUserPrivateKey(credentialsId: 'afd41fdf-71c7-4174-8d63-c4ae8d163367', keyFileVariable: 'SSH_KEY')]){
-                    sh "ssh-agent bash -c 'ssh-add ${SSH_KEY}; mvn -B gitflow:release-start gitflow:release-finish -DpostReleaseGoals=deploy'"
+                withCredentials([
+                        sshUserPrivateKey(credentialsId: 'afd41fdf-71c7-4174-8d63-c4ae8d163367', keyFileVariable: 'SSH_KEY'),
+                        usernamePassword(credentialsId: 'nexus_credentials', usernameVariable: 'SONATYPE_USERNAME', passwordVariable: 'SONATYPE_PASSWORD')
+                ]){
+                    sh "ssh-agent bash -c 'ssh-add ${SSH_KEY}; mvn --settings $WORKSPACE/distribution/settings.xml -B gitflow:release-start gitflow:release-finish -DpostReleaseGoals=deploy'"
                 }
             }
         }
