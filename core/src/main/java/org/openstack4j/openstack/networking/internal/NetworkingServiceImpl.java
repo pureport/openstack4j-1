@@ -13,6 +13,8 @@ import org.openstack4j.api.networking.SecurityGroupService;
 import org.openstack4j.api.networking.SubnetService;
 import org.openstack4j.api.networking.ext.AgentService;
 import org.openstack4j.api.networking.ext.FirewallAsService;
+import org.openstack4j.api.networking.ext.Layer2GatewayConnectionService;
+import org.openstack4j.api.networking.ext.Layer2GatewayService;
 import org.openstack4j.api.networking.ext.LbaasV2Service;
 import org.openstack4j.api.networking.ext.LoadBalancerService;
 import org.openstack4j.api.networking.ext.NetQuotaService;
@@ -131,5 +133,15 @@ public class NetworkingServiceImpl implements NetworkingService {
     @Override
     public QoSPolicyService qosPolicies() {
         return Apis.get(QoSPolicyService.class);
+    }
+
+    @Override
+    public Layer2GatewayService l2Gateways(){
+        return Apis.get(Layer2GatewayService.class);
+    }
+
+    @Override
+    public Layer2GatewayConnectionService l2GatewayConnections() {
+        return Apis.get(Layer2GatewayConnectionService.class);
     }
 }

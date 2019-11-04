@@ -2,6 +2,8 @@ package org.openstack4j.api.networking;
 
 import org.openstack4j.api.networking.ext.AgentService;
 import org.openstack4j.api.networking.ext.FirewallAsService;
+import org.openstack4j.api.networking.ext.Layer2GatewayConnectionService;
+import org.openstack4j.api.networking.ext.Layer2GatewayService;
 import org.openstack4j.api.networking.ext.LbaasV2Service;
 import org.openstack4j.api.networking.ext.LoadBalancerService;
 import org.openstack4j.api.networking.ext.NetQuotaService;
@@ -89,4 +91,14 @@ public interface NetworkingService extends RestService {
      * @return QoS Policy Service API
      */
     QoSPolicyService qosPolicies();
+
+    /**
+     * @return Layer 2 Gateway Service API
+     */
+    Layer2GatewayService l2Gateways();
+
+    /**
+     * @return Layer 2 Gateway Connection Service API
+     */
+    Layer2GatewayConnectionService l2GatewayConnections();
 }
