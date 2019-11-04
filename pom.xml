@@ -201,13 +201,13 @@
                 <artifactId>gitflow-maven-plugin</artifactId>
                 <version>1.11.0</version>
                 <configuration>
-                    <flowInitContext>
+                    <gitFlowConfig>
                         <masterBranchName>pureport/master</masterBranchName>
                         <developBranchName>pureport/develop</developBranchName>
                         <featureBranchPrefix>feature/</featureBranchPrefix>
                         <releaseBranchPrefix>release/</releaseBranchPrefix>
                         <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
-                    </flowInitContext>
+                    </gitFlowConfig>
                 </configuration>
                 <dependencies>
                     <dependency>
